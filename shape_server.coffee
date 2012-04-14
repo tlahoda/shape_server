@@ -24,7 +24,7 @@ app.get '/:shape', (req, res) ->
     body = {error: 'You have specified a shape that does not exist.'}
   else
     body = shapes.shapes[req.params.shape]
-  res.json body
+  res.json body, {'Access-Control-Allow-Origin': '*'}
 
 app.listen 4000
 console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
