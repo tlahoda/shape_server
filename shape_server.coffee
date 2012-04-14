@@ -1,15 +1,10 @@
 express = require 'express'
-app = module.exports = express.createServer express.favicon __dirname + "/public/images/favicon.png"
+app = module.exports = express.createServer()
 
 Shapefile = require('./shapefile/shapefile').Shapefile
 countries = new Shapefile './shapefiles/northamerica_adm0'
 
 app.configure ->
-  app.use express.bodyParser()
-  app.use express.methodOverride()
-  app.use express.cookieParser()
-  app.use express.session
-    secret: 'nafinsoreo23'
   app.use app.router
 
 app.configure 'development', ->
